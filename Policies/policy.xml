@@ -1,0 +1,15 @@
+<policies>
+    <inbound>
+        <base />
+        <quota-by-key calls="500" renewal-period="500" counter-key="@(context.Request.IpAddress)" />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
