@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "apimServiceName": {
-            "value": "apim-prd-dc"
+            "value": "apim-demo-qa"
         },
         "apiPath": {
             "value": "colour"
