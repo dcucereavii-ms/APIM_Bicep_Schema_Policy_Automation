@@ -46,14 +46,14 @@ jobs:
       uses: Azure/cli@v1
       with:
         inlineScript: |
-          az deployment group validate --resource-group apim-demo --template-file main.bicep --name validate-${{ github.run_id }} --parameters parameters.json
+          az deployment group validate --resource-group apim-demo --template-file api/api.bicep --name validate-${{ github.run_id }} --parameters parameters.json
  
     # Preview changes
     - name: "What-If"
       uses: Azure/cli@v1
       with:
         inlineScript: |
-          az deployment group what-if --resource-group apim-demo --name whatif-${{ github.run_id }} --template-file main.bicep --parameters parameters.json > whatif
+          az deployment group what-if --resource-group apim-demo --name whatif-${{ github.run_id }} --template-file api/api.bicep --parameters parameters.json > whatif
 
     # Create string output of Whatif
     - name: Create String Output
@@ -122,7 +122,7 @@ jobs:
       uses: Azure/cli@v1
       with:
         inlineScript: |
-          az deployment group create --resource-group apim-demo --template-file main.bicep --parameters parameters.json
+          az deployment group create --resource-group apim-demo --template-file api/api.bicep --parameters parameters.json
 
 
             
