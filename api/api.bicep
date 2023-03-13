@@ -1,6 +1,6 @@
 param apimServiceName string
-var apiSpec = loadTextContent('swagger.json')
-var xmlPolicy = loadTextContent('policy.xml')
+var apiSpec = loadTextContent('../Schemas/swagger.json')
+var xmlPolicy = loadTextContent('../Policies/policy.xml')
 resource apimServiceName_sw_api_rev_1 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
   name: '${apimServiceName}/sw;rev=1'
   properties: {
