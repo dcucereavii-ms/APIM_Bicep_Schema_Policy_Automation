@@ -28,8 +28,8 @@ param apiPath string
 param apiFormat string
 
 
-var apiSpec = loadTextContent('../Schemas/swagger.json')
-var xmlPolicy = loadTextContent('../Policies/policy.xml')
+var apiSpec = loadTextContent('swagger.json')
+var xmlPolicy = loadTextContent('policy.xml')
 resource apimServiceName_colours_api_rev_1 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
   name: '${apimServiceName}/colours-api;rev=1'
   properties: {
