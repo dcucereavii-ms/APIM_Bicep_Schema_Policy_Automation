@@ -1,39 +1,10 @@
-// ****************************************
-// Azure Bicep main template
-// This bicep template demonstrates publishing an existing API end-point to an existing API maangement instance.
-// The example illustrates using the "existing" term for an exisitng resource and then also importing an API end-point with OpenDocs specificatons to API management
-// ****************************************
-//refer to existing APIM
-targetScope = 'resourceGroup'
-
-
-//required parameters
-param apimServiceName string  // need to be provided since it is existing
-//param apimRG string //resource group of existing APIM instance
-param apiPath string
-
-@allowed([
-  'openapi'
-  'openapi+json'
-  'openapi+json-link'
-  'swagger-json'
-  'swagger-link-json'
-  'wadl-link-json'
-  'wadl-xml'
-  'wsdl'
-  'wsdl-link'
-])
-@description('Type of OpenAPI we are importing')
-
-param apiFormat string
-
-
+param apimServiceName string
 var apiSpec = loadTextContent('swagger.json')
 var xmlPolicy = loadTextContent('policy.xml')
-resource apimServiceName_colours_api_rev_1 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
-  name: '${apimServiceName}/colours-api;rev=1'
+resource apimServiceName_sw_api_rev_1 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
+  name: '${apimServiceName}/sw;rev=1'
   properties: {
-    description: 'Colours API'
+    description: 'Star Wars'
     authenticationSettings: {
       subscriptionKeyRequired: false
     }
@@ -43,10 +14,10 @@ resource apimServiceName_colours_api_rev_1 'Microsoft.ApiManagement/service/apis
     }
     apiRevision: '1'
     subscriptionRequired: true
-    displayName: 'Colours API'
-    serviceUrl: 'https://markcolorapi.azurewebsites.net/'
-    path: apiPath
-    format: apiFormat
+    displayName: 'Star Wars'
+    serviceUrl: 'https://swapi.dev/api'
+    path: 'sw'
+    format: 'openapi+json'
     value: apiSpec
     protocols: [
       'https'
@@ -55,8 +26,8 @@ resource apimServiceName_colours_api_rev_1 'Microsoft.ApiManagement/service/apis
   dependsOn: []
 }
 
-resource apimServiceName_colours_api_rev_1_policy 'Microsoft.ApiManagement/service/apis/policies@2021-08-01' = {
-  parent: apimServiceName_colours_api_rev_1
+resource apimServiceName_sw_api_rev_1_policy 'Microsoft.ApiManagement/service/apis/policies@2021-08-01' = {
+  parent: apimServiceName_sw_api_rev_1
   name: 'policy'
   properties: {
     value: xmlPolicy
