@@ -5,6 +5,9 @@
         "apimServiceName": {
             "value": "apim-demo-qa"
         },
+        // "apimRG": {
+        //     "value": "APIMDemoQAResourceGroup-EUS1"
+        // },
         "apiPath": {
             "value": "colour"
         },
