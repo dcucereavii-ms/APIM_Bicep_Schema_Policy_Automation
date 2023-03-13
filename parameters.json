@@ -8,11 +8,11 @@
         // "apimRG": {
         //     "value": "APIMDemoQAResourceGroup-EUS1"
         // },
-        "apiPath": {
-            "value": "colour"
-        },
-        "apiFormat": {
-            "value": "openapi+json"
-        }
+        // "apiPath": {
+        //     "value": "colour"
+        // },
+        // "apiFormat": {
+        //     "value": "openapi+json"
+        // }
     }
 }
